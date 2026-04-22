@@ -2,6 +2,8 @@
 
 Monorepo for the PissPot marketing site (Next.js), shared design system, and API helpers. React Native will live under `apps/mobile` when you add it.
 
+**GitHub:** [github.com/adamcode4/PissPot](https://github.com/adamcode4/PissPot)
+
 ## Layout
 
 - `apps/web` — Next.js (App Router), landing page, Supabase waitlist
@@ -28,8 +30,8 @@ Copy `apps/web/.env.example` to `apps/web/.env.local` and add your Supabase URL 
 
 ## Deploy on Vercel
 
-1. Import this repo in Vercel.
-2. Set **Root Directory** to `apps/web`.
-3. Add environment variables `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` (same values as local).
-
-Build command and output directory use Next.js defaults.
+1. In [Vercel](https://vercel.com) → **Add New…** → **Project** → import **adamcode4/PissPot**.
+2. Set **Root Directory** to **`apps/web`** (Framework Preset: Next.js).
+3. `apps/web/vercel.json` runs **`npm ci`** and **`npm run build`** from the **monorepo root** so workspace packages (`@pisspot/*`) resolve correctly.
+4. Add **Environment Variables**: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+5. Deploy.
