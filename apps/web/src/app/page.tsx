@@ -92,7 +92,7 @@ const damage: Damage[] = [
   { value: "22", label: "songs shouted" },
   { value: "03", label: "dancefloors visited" },
   { value: "05", label: "strangers befriended" },
-  { value: "02", label: "smoke‑break trips" },
+  { value: "02", label: "smoko breaks" },
   { value: "01", label: "questionable kebab", dot: true },
   { value: "07", label: "mystery photos" },
   { value: "03", label: "extra‑curriculars" },
