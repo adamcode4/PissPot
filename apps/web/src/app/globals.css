@@ -10,10 +10,11 @@
   }
   body {
     @apply min-h-screen bg-pp-ink font-sans text-pp-text antialiased;
+    font-feature-settings: "ss01", "cv11";
   }
   ::selection {
-    background: var(--pp-grape);
-    color: white;
+    background: var(--pp-orange);
+    color: #050505;
   }
 }
 
@@ -26,9 +27,15 @@
     @apply font-display text-[12px] font-bold uppercase tracking-eyebrow sm:text-[13px];
   }
   .pp-grad-word {
-    background: var(--pp-gradient-brand, linear-gradient(135deg, #7c5cff 0%, #ff4f9a 100%));
+    background: linear-gradient(135deg, #ff6b1a 0%, #ffc36b 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+  .pp-tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .pp-hairline-t {
+    @apply border-t border-pp-border;
   }
 }

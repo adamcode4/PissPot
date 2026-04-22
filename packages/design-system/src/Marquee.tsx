@@ -2,41 +2,32 @@ import type { ReactNode } from "react";
 
 export type MarqueeProps = {
   items: string[];
-  tone?: "dark" | "cream";
   className?: string;
 };
 
 /**
- * Infinite horizontal band of words — PissPot brand signature (see design.md §4.6).
- * Duplicates the items list so the CSS animation loops seamlessly at -50%.
+ * PissPot marquee — single tone (dark). See design.md §4.6.
  */
-export function Marquee({ items, tone = "dark", className = "" }: MarqueeProps) {
-  const colors =
-    tone === "dark"
-      ? "bg-pp-ink text-pp-text border-y border-pp-border"
-      : "bg-pp-cream text-pp-creamInk border-y border-pp-creamInk/10";
+export function Marquee({ items, className = "" }: MarqueeProps) {
   return (
     <div
-      className={`relative overflow-hidden ${colors} ${className}`}
+      className={`relative overflow-hidden border-y border-pp-border bg-pp-surface ${className}`}
       aria-hidden
     >
       <div className="flex min-w-full shrink-0 animate-marquee whitespace-nowrap">
         {[...items, ...items].map((w, i) => (
-          <Word key={i} tone={tone}>
-            {w}
-          </Word>
+          <Word key={i}>{w}</Word>
         ))}
       </div>
     </div>
   );
 }
 
-function Word({ children, tone }: { children: ReactNode; tone: "dark" | "cream" }) {
-  const dot = tone === "dark" ? "text-pp-gold" : "text-pp-pink";
+function Word({ children }: { children: ReactNode }) {
   return (
-    <span className="flex items-center gap-10 px-6 py-6 font-display text-2xl font-bold tracking-tightest sm:text-4xl">
+    <span className="flex items-center gap-10 px-6 py-5 font-display text-xl font-bold lowercase tracking-tightest text-pp-text sm:text-3xl">
       {children}
-      <span className={`text-3xl leading-none ${dot}`}>·</span>
+      <span className="text-3xl leading-none text-pp-ember">·</span>
     </span>
   );
 }

@@ -1,33 +1,32 @@
 /**
- * PissPot design tokens. See /design.md for semantics and rules.
+ * PissPot design tokens (v2 — black & orange). See /design.md.
  * Import before Tailwind: @import "@pisspot/design-system/tokens.css";
  */
 :root {
   /* Brand */
-  --pp-grape: #7c5cff;
-  --pp-grape-hover: #8e72ff;
-  --pp-grape-soft: #1f1636;
-  --pp-gold: #f4b942;
-  --pp-pink: #ff4f9a;
-  --pp-mint: #5be0b3;
-  --pp-red: #ff5c5c;
+  --pp-orange: #ff6b1a;
+  --pp-orange-hi: #ff8a3d;
+  --pp-orange-deep: #b8430f;
+  --pp-ember: #ffc36b;
+  --pp-mint: #7ed0a0;
+  --pp-red: #f25c4f;
 
-  /* Dark neutrals */
-  --pp-ink: #07060a;
-  --pp-surface: #0f0e14;
-  --pp-surface-2: #16141f;
-  --pp-border: rgba(255, 255, 255, 0.08);
-  --pp-text: #f4f2ff;
-  --pp-muted: #9d96b8;
+  /* Black-first neutrals */
+  --pp-ink: #050505;
+  --pp-surface: #0c0b0d;
+  --pp-surface-2: #151318;
+  --pp-surface-3: #1d1a20;
+  --pp-border: rgba(255, 255, 255, 0.07);
+  --pp-border-strong: rgba(255, 255, 255, 0.12);
+  --pp-text: #f5f1ea;
+  --pp-muted: #8a8680;
+  --pp-muted-2: #5a5650;
 
-  /* Bright surfaces */
-  --pp-cream: #fff6e6;
-  --pp-cream-ink: #1a0b2e;
-  --pp-cream-muted: #5a4a76;
-
-  /* Effects */
-  --pp-glow-grape: 0 0 80px -12px rgba(124, 92, 255, 0.55);
-  --pp-radius-card: 24px;
+  /* Effects — restrained */
+  --pp-glow-ember: 0 0 28px -12px rgba(255, 107, 26, 0.4);
+  --pp-inset-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --pp-radius-card: 20px;
+  --pp-radius-input: 14px;
   --pp-radius-pill: 999px;
 
   /* Typography (set by app via next/font) */

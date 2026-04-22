@@ -1,99 +1,96 @@
 # PissPot — DESIGN.md
 
 > Design system for **pisspot.com** and the **PissPot** React Native app.
-> Inspired by **discord.com** (Imagine a Place, 2021+ rebrand): playful, expressive, confident, unapologetically fun — but re‑tuned for **nights out**, not gaming. This document is the Source of Truth for humans and AI agents building PissPot surfaces.
+> **v2 — black & orange, gamified‑modern.**
 > Format inspired by [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md).
 
 ---
 
 ## 1. Visual Theme & Atmosphere
 
-PissPot feels like **the group chat at 11pm**: loud, warm, unserious, and a little chaotic — but still legible and brand-safe. Discord taught the world that a tech product could be **playful without being childish**; PissPot borrows that tone and points it at drinks, crawls, and crews.
+PissPot is a **dark, gamified night‑out tracker** — closer to a high‑end sports tracker than a party app. Think **Whoop meets Strava meets a good bar at midnight**: charcoal surfaces, a single molten orange accent, stats that mean something, zero cheese.
 
-- **Mood**: neon-lit bar window at night, not a dashboard.
-- **Density**: low. Big type, generous padding, breathable sections.
-- **Rhythm**: sections alternate between **deep night surfaces** and **bright bar-light surfaces** (Discord uses the same dark/light trick to keep scroll momentum).
-- **Personality**: copy is lowercase-leaning, short, slightly rude; never lectures; never hustles "maximize your night."
-- **Illustration over photo**: sticker-like, thick outlines, optical curves, soft 3D shadows. Zero stock photography.
-- **Motion**: small, rewarding, cheap — fade-ups, tiny bobs, a rotating word marquee. Never parallax heavy, never scroll-jacked.
+- **Mood**: **all‑night dark**. One ambient canvas, subtle tonal shifts between sections, no light/dark flipping.
+- **Density**: medium. Confident stat tiles, clear hierarchy, short copy.
+- **Rhythm**: sections are **all on the same dark base**; separation comes from hairlines, inset wells, and subtle noise — not from switching backgrounds.
+- **Personality**: playful but dry; lowercase headlines, wry micro‑copy, no emoji, no stock glassware.
+- **Gamified surfaces**: level chips, XP bars, streaks, rank badges, leaderboard rows. These are **first‑class components**, not decorations.
+- **Glow**: restrained. One soft ember behind the hero, a faint orange rim around the primary CTA. Never "web3 neon."
+- **Motion**: fade‑ups, one marquee, a pulsing streak dot. No parallax, no scroll‑jack, no autoplay video.
 
-Design philosophy in one line: **a night out UI — never a productivity UI.**
+Design philosophy in one line: **a stat line for your night — dark, precise, and a little cocky.**
 
 ---
 
 ## 2. Color Palette & Roles
 
-Discord is anchored on one colour (Blurple). PissPot is anchored on **Grape** with a **Gold** accent for the product's drink/energy metaphor and **Hot Pink** for social/celebratory moments. All roles are semantic; agents should use role names, not raw hex.
+Two hues do the heavy lifting: **deep black** and **molten orange**. Everything else is tonal.
 
 ### 2.1 Brand
 
 | Token | Hex | Role |
 |---|---|---|
-| `--pp-grape` | `#7C5CFF` | Primary brand, primary CTA, links, focus rings |
-| `--pp-grape-hover` | `#8E72FF` | Primary hover/active |
-| `--pp-grape-soft` | `#1F1636` | Brand-tinted surfaces, chips on dark |
-| `--pp-gold` | `#F4B942` | Accent 1 — energy, streaks, badges, highlights |
-| `--pp-pink` | `#FF4F9A` | Accent 2 — social, reactions, celebratory states |
-| `--pp-mint` | `#5BE0B3` | Success / "you're in" / positive confirmations |
-| `--pp-red` | `#FF5C5C` | Errors, destructive |
+| `--pp-orange` | `#FF6B1A` | Primary brand, primary CTA, links, focus ring |
+| `--pp-orange-hi` | `#FF8A3D` | Hover / pressed highlights |
+| `--pp-orange-deep` | `#B8430F` | Depth (borders, inset wells, pressed states) |
+| `--pp-ember` | `#FFC36B` | Accent for streaks, progress bars, highlights |
+| `--pp-mint` | `#7ED0A0` | Success ("you're in", streak held) — muted on purpose |
+| `--pp-red` | `#F25C4F` | Errors / destructive |
 
-### 2.2 Neutrals (dark-first)
-
-| Token | Hex | Role |
-|---|---|---|
-| `--pp-ink` | `#07060A` | Page background (deep night) |
-| `--pp-surface` | `#0F0E14` | Raised surface / card back |
-| `--pp-surface-2` | `#16141F` | Elevated surface / form wells |
-| `--pp-border` | `rgba(255,255,255,0.08)` | Hairline dividers |
-| `--pp-text` | `#F4F2FF` | Primary text on dark |
-| `--pp-muted` | `#9D96B8` | Secondary text, captions |
-
-### 2.3 Bright surfaces (for alternating sections)
+### 2.2 Neutrals (black‑first)
 
 | Token | Hex | Role |
 |---|---|---|
-| `--pp-cream` | `#FFF6E6` | Warm light section (bar-light feel) |
-| `--pp-cream-ink` | `#1A0B2E` | Text on cream |
-| `--pp-cream-muted` | `#5A4A76` | Secondary text on cream |
+| `--pp-ink` | `#050505` | Page background |
+| `--pp-surface` | `#0C0B0D` | Section background (subtly lifted) |
+| `--pp-surface-2` | `#151318` | Card background |
+| `--pp-surface-3` | `#1D1A20` | Elevated card, inputs |
+| `--pp-border` | `rgba(255,255,255,0.07)` | Hairlines, card borders |
+| `--pp-border-strong` | `rgba(255,255,255,0.12)` | Inputs, dividers |
+| `--pp-text` | `#F5F1EA` | Primary text (warm off‑white, never pure white) |
+| `--pp-muted` | `#8A8680` | Secondary text |
+| `--pp-muted-2` | `#5A5650` | Captions, watermarks |
 
-### 2.4 Gradients & effects
+### 2.3 Effects (restrained)
 
-- **`gradient-brand`**: `linear-gradient(135deg, #7C5CFF 0%, #FF4F9A 100%)` — hero CTA emphasis, wordmark sweeps.
-- **`gradient-late-night`**: `radial-gradient(60% 50% at 50% 0%, rgba(124,92,255,0.35), transparent 60%)` — hero ambient glow.
-- **`gradient-golden-hour`**: `linear-gradient(135deg, #F4B942 0%, #FF4F9A 60%, #7C5CFF 100%)` — marketing moments only.
-- **`glow-grape`**: `0 0 80px -12px rgba(124,92,255,0.55)` — pinned on primary CTA.
+- **`gradient-ember`**: `linear-gradient(135deg, #FF6B1A 0%, #FFA552 100%)` — primary CTA, level chips, one accent word per headline.
+- **`gradient-coal`**: `radial-gradient(60% 40% at 50% -10%, rgba(255,107,26,0.18), transparent 60%)` — single ambient hero backdrop.
+- **`grain`**: a 2% opacity noise overlay on all dark surfaces (reduces banding, adds texture).
+- **`glow-ember`**: `0 0 28px -12px rgba(255,107,26,0.40)` — applied only to the primary CTA and one hero prop. **Much softer than v1.**
 
-**Rule**: never more than two brand colors in the same viewport. Grape leads, Gold or Pink supports. Mint is reserved for "you're on the list" style confirmations.
+**Rules**
+- One hero viewport = **one** orange focal point (the CTA or a level chip, not both at 100%).
+- Never pair orange with a second bright hue. Ember supports orange; everything else stays neutral.
 
 ---
 
 ## 3. Typography Rules
 
-Discord commissioned **Ginto Nord** (tight, expressive, lowercase-friendly display) paired with **ABC Ginto Normal** for body. PissPot uses free substitutes that mirror those characteristics.
+Two fonts. No third.
 
-- **Display**: **Bricolage Grotesque** (variable, optical size + width). Playful, slightly eccentric, tightly set — same energy as Ginto Nord.
-- **Body / UI**: **Inter**. Neutral, reliable, excellent at small sizes.
-- **Numeric / stat tiles**: Inter `tabular-nums`, weight 600.
+- **Display**: **Bricolage Grotesque** — variable, tight, slightly eccentric. Same role as Ginto Nord.
+- **Body / UI**: **Inter** — neutral and reliable.
+- **Numerics (stats, XP, times)**: Inter with `font-variant-numeric: tabular-nums;`, weight **600**.
 
 ### 3.1 Hierarchy
 
 | Step | Use | Font | Weight | Size (mobile → desktop) | Tracking | Case |
 |---|---|---|---|---|---|---|
-| Display XL | Hero H1 | Bricolage Grotesque | 800 | 44 → 88 px | -0.03em | lowercase |
-| Display L | Section H2 | Bricolage Grotesque | 800 | 32 → 56 px | -0.025em | lowercase |
-| Display M | Card H3, marquee | Bricolage Grotesque | 700 | 22 → 32 px | -0.02em | lowercase |
-| Eyebrow | Section kicker | Bricolage Grotesque | 700 | 12 → 13 px | 0.22em | UPPERCASE |
+| Display XL | Hero H1 | Bricolage | 800 | 44 → 84 px | -0.03em | lowercase |
+| Display L | Section H2 | Bricolage | 800 | 30 → 52 px | -0.025em | lowercase |
+| Display M | Card H3 | Bricolage | 700 | 20 → 28 px | -0.02em | lowercase |
+| Eyebrow | Section kicker | Bricolage | 700 | 12 → 13 px | 0.24em | UPPERCASE |
+| Stat | XP / numbers | Inter | 700 | 22 → 32 px | -0.01em | tabular |
 | Body L | Hero subcopy | Inter | 400 | 17 → 19 px | 0 | sentence |
 | Body M | Default text | Inter | 400 | 15 → 16 px | 0 | sentence |
-| Caption | Legal, meta | Inter | 500 | 12 → 13 px | 0.01em | sentence |
-| Button | CTA label | Inter | 600 | 15 → 15 px | 0.01em | sentence |
+| Mono meta | Timestamps, IDs | Inter | 500 | 12 → 13 px | 0.02em | tabular |
+| Button | CTA label | Inter | 600 | 15 px | 0.01em | sentence |
 
 ### 3.2 Rules
 
-- Headlines are **lowercase**, short, and playful. "gamify nights out — not spreadsheets" is on-brand; "Optimize Your Evening Experience" is not.
-- Allow **one mixed-font word per headline** using `gradient-brand` to create a focal point.
-- Line-height: headlines **1.02–1.08**, body **1.55–1.65**.
-- Max measure: **60ch** for body, **18ch** for hero headlines on desktop.
+- Headlines are **lowercase** and short; **one** word per headline may use `gradient-ember`.
+- Line‑height: headlines **1.02–1.06**, body **1.55–1.65**.
+- Max measure: **60ch** for body, **16ch** for hero headlines on desktop.
 
 ---
 
@@ -103,114 +100,132 @@ Discord commissioned **Ginto Nord** (tight, expressive, lowercase-friendly displ
 
 | Variant | Background | Text | Border | Shadow | Radius |
 |---|---|---|---|---|---|
-| Primary | `gradient-brand` | `#FFFFFF` | none | `glow-grape` | 999px |
-| Secondary | `--pp-surface-2` | `--pp-text` | 1px `--pp-border` | none | 999px |
+| Primary | `gradient-ember` | `#050505` | none | `glow-ember` | 999px |
+| Secondary | `--pp-surface-3` | `--pp-text` | 1px `--pp-border-strong` | none | 999px |
 | Ghost | transparent | `--pp-muted` → `--pp-text` on hover | none | none | 999px |
-| On-cream primary | `#1A0B2E` | `#FFF6E6` | none | `0 10px 30px -10px rgba(26,11,46,0.5)` | 999px |
+| Icon | `--pp-surface-2` | `--pp-text` | 1px `--pp-border` | none | 999px |
 
-- **Height**: 52px desktop, 48px mobile. Horizontal padding 28px.
+- **Height**: 52px desktop, 48px mobile. Padding-x 28px.
 - **Hover**: `translateY(-1px)` + 4% brightness up. Active: `scale(0.98)`.
-- **Focus**: 2px offset outline in `--pp-grape`, always visible for keyboard.
-- **Shape**: fully rounded ("pill"). This is a strong brand cue — do not square buttons.
+- **Focus**: 2px offset outline in `--pp-orange`.
+- **Shape**: fully rounded pill — brand signature.
+- **Icon buttons**: 40×40 square on small screens, pill with icon+label ≥ md.
 
-### 4.2 Cards
+### 4.2 Cards & surfaces
 
-- **Dark surface card**: `--pp-surface` background, 1px `--pp-border`, radius **24px**, padding 24–32px, shadow `0 24px 80px -32px rgba(0,0,0,0.65)`.
-- **Feature card**: dark surface card + a 1px top accent line with `gradient-brand`, 40px wide, transitioning to 56px on hover.
-- **Cream card**: `--pp-cream` background, radius 24px, shadow `0 20px 60px -24px rgba(26,11,46,0.25)`.
+- **Card**: `--pp-surface-2`, 1px `--pp-border`, radius **20px**, padding 20–28px, subtle inner top highlight `inset 0 1px 0 rgba(255,255,255,0.04)`. **No heavy drop shadow.**
+- **Stat tile**: card + orange vertical tick on the left (3px × 100%) OR a small `--pp-ember` dot top‑right.
+- **Well / input**: `--pp-surface-3` background, 1px `--pp-border-strong`, radius 14px.
 
-### 4.3 Inputs (text)
+### 4.3 Gamified elements
 
-- Height 52px, radius 16px, background `--pp-surface-2`, border 1px `--pp-border`.
-- Focus: border becomes `--pp-grape` at 50% alpha; ring 3px `--pp-grape` at 20%.
-- Placeholder uses `--pp-muted`. Disabled opacity 0.5.
+- **Level chip**: pill, `gradient-ember` 1px border + `--pp-surface-2` background, label `lvl 12 · regular`. Height 26px.
+- **Rank chip**: pill, `#050505` background, 1px `--pp-border-strong`, gold dot on left (`--pp-ember`). Label `#03 this month`.
+- **XP bar**: height 6px, background `--pp-surface-3`, fill `gradient-ember`, radius 999px, trailing hairline at 100% for scale.
+- **Streak dot**: 8px circle, `--pp-ember`, `animate-pulse-dot` — paired with "5 wk streak" stat.
+- **Leaderboard row**: grid of `[rank 40px] [avatar 32px] [name 1fr] [score 56px]`, rank bg `--pp-surface-3`, selected row gets a 2px left border in `--pp-orange`.
 
-### 4.4 Chips / Badges
+### 4.4 Inputs (text)
 
-- Pill shape, 28px tall, 1px border `--pp-border`, background `--pp-surface` at 60% alpha.
-- On cream: background `#1A0B2E` at 6%, text `--pp-cream-ink`.
-- For "live" or "new" flags, prefix with a 6px pulsing dot in `--pp-gold` (energy) or `--pp-pink` (social).
+- Height 52px, radius 14px, background `--pp-surface-3`, border 1px `--pp-border-strong`.
+- Focus: border → `--pp-orange` at 70%; 3px ring at 18% alpha. No drop shadow.
 
 ### 4.5 Navigation
 
-- Top nav is transparent on hero, becomes `--pp-ink` at 80% alpha + `backdrop-blur(14px)` once scrolled.
-- Links use Body M, `--pp-muted` → `--pp-text` on hover with underline that animates left-to-right.
+- Sticky. Background `--pp-ink` at 70% + `backdrop-blur(14px)`. Bottom 1px `--pp-border`.
+- Links in Body M, `--pp-muted` → `--pp-text` on hover.
+- Always shows the primary CTA pill on the right at `≥ sm`.
 
-### 4.6 Marquee (Discord homage)
+### 4.6 Marquee
 
-A horizontal, infinitely-scrolling band of single words separated by a sticker-style dot, e.g. **`pints · crawls · crews · karaoke · pints · crawls · crews · karaoke`**. This is the PissPot equivalent of Discord's "talk · play · chat · hang out." It is **required** on the landing page.
+- Full‑bleed horizontal word band, dividers are `--pp-ember` dots. Uses `animate-marquee` (32s linear).
+- **Height 56–72px**. Background `--pp-surface`, top/bottom hairlines only.
+- Copy examples: `pints · crawls · crews · karaoke · kebabs · shots · dancefloor · afters`.
 
 ---
 
 ## 5. Layout Principles
 
-- **Page scaffold**: CSS Grid with named lines (`full-start | content-start | content-end | full-end`). Content column max-width **1120px**, gutters `clamp(16px, 4vw, 40px)`.
-- **Section rhythm**: vertical padding `clamp(64px, 10vw, 144px)`. Never less than 64px between sections.
-- **Alternation**: dark (ink) → cream → dark → cream. Each hand-off uses a subtle gradient mask, not a hard line.
-- **Spacing scale** (Tailwind-friendly): 4, 8, 12, 16, 24, 32, 48, 64, 96, 128 px.
-- **Breakpoints**: `sm 480`, `md 768`, `lg 1024`, `xl 1280`, `2xl 1440`.
-- **Asymmetry**: allow one off-grid element per section (a tilted badge, a rotated sticker) to break the "template" feel. Cap tilt at ±6°.
+- **Scaffold**: CSS Grid, max content width **1120px**, gutters `clamp(16px, 4vw, 40px)`.
+- **All‑dark rhythm**: do **not** alternate light/dark. Instead separate sections with:
+  1. a hairline divider (`--pp-border`),
+  2. a tonal shift (`--pp-ink` ↔ `--pp-surface`),
+  3. generous vertical space (`clamp(72px, 10vw, 144px)`).
+- **Spacing scale**: 4, 8, 12, 16, 24, 32, 48, 64, 96, 128 px.
+- **Breakpoints**: `sm 480`, `md 768`, `lg 1024`, `xl 1280`.
+- **Noise**: every dark surface gets the `grain` overlay at 2% opacity to kill banding.
 
 ---
 
 ## 6. Depth & Elevation
 
-Four-level surface system — use role, not arbitrary shadow:
+One ambient glow, one card shadow — that's it.
 
 | Level | Use | Background | Shadow |
 |---|---|---|---|
 | 0 | Page | `--pp-ink` | none |
-| 1 | Section block | `--pp-ink` | subtle inner ambient glow only |
-| 2 | Card / form well | `--pp-surface` / `--pp-surface-2` | `0 24px 80px -32px rgba(0,0,0,0.65)` |
-| 3 | Floating CTA, modal, toast | `--pp-surface-2` | `glow-grape` + `0 30px 60px -20px rgba(0,0,0,0.75)` |
+| 1 | Section | `--pp-surface` | none |
+| 2 | Card | `--pp-surface-2` | `inset 0 1px 0 rgba(255,255,255,0.04)` |
+| 3 | Primary CTA / hero prop | – | `glow-ember` |
 
-No 1px "inset highlight" shadows. No glassmorphism beyond the sticky nav.
+No stacked shadows. No glassmorphism. No multi‑layer blurs.
 
 ---
 
 ## 7. Do's and Don'ts
 
 **Do**
-- Lead with a single sentence, lowercase, with one gradient word.
-- Alternate dark and cream sections to keep scroll alive.
-- Use the marquee band, pill buttons, and sticker-style chips — they are brand signatures.
-- Write like a mate texting you about the night, not a product manager.
-- Keep ages/consent language visible near any CTA that could be read as promoting drinking.
+- Keep it all on a black canvas with tonal shifts only.
+- Lean into gamified surfaces: level chips, XP bars, leaderboards, streaks.
+- Use one gradient word per headline, one orange CTA per viewport.
+- Use tabular numerics for every stat.
+- Keep legal/age copy near every CTA that touches alcohol.
 
 **Don't**
-- Use stock photography of people clinking glasses. Ever.
-- Add a "drink counter" style hero number — PissPot does not glamourise volume.
-- Use Discord's Blurple (`#5865F2`) or Clyde the mascot. We are inspired by, not a clone of, Discord.
-- Use more than two brand colours in one viewport.
-- Use square buttons or harsh 4px radii on primary surfaces.
-- Add scroll-jacking, parallax, or autoplaying video on the marketing site.
+- Alternate dark and cream sections.
+- Use heavy glows, neon stacks, or multi‑color gradients.
+- Add a second bright accent color to compete with orange.
+- Use stock photos of people drinking. Ever.
+- Use sharp 4px corners on primary surfaces — keep 14/20/999.
 
 ---
 
 ## 8. Content & Voice
 
-- **Tone**: mate, not marketer. Funny, warm, self-aware.
-- **Voice rules**: verbs > adjectives. Short sentences. One joke per section, max.
-- **Inclusive defaults**: not everyone drinks. Speak about **nights out**, **crawls**, **crews** — alcohol is optional decoration, not the product.
-- **Compliance**: any CTA implying alcohol shows "18+ where alcohol is involved. Drink responsibly." as a caption near it.
+- **Tone**: dry, confident, a little cocky. Short sentences. One joke per section max.
+- **Examples**
+  - ✅ "track the night. pretend you remember."
+  - ✅ "lvl up, not hangovers."
+  - ❌ "Supercharge your evenings today!!"
+- **Inclusive**: alcohol is optional decoration. Speak about **nights out, crawls, crews**.
+- **Compliance**: show "18+ where alcohol is involved. drink responsibly." near any CTA implying drinking.
 
 ---
 
 ## 9. Agent Prompt Guide
 
-When asking an AI agent to build a PissPot page, paste this block:
+Paste this into an agent when building PissPot surfaces:
 
 ```
-Use design.md. PissPot is a "nights out" social app. Dark-first palette, grape (#7C5CFF) primary, gold (#F4B942) and pink (#FF4F9A) accents, mint (#5BE0B3) for success. Typography: Bricolage Grotesque display, Inter body. Headlines lowercase, one gradient word per headline. Pill-shaped buttons (radius 999px), 24px radius cards. Alternate dark (#07060A) and cream (#FFF6E6) sections. Include a horizontal marquee band of words. No stock photos. No Discord Blurple. Max two brand colours per viewport.
+Use design.md v2. PissPot is a dark, gamified night‑out tracker.
+Canvas: all black — #050505 page, #0C0B0D sections, #151318 cards.
+One accent: molten orange #FF6B1A with #FFC36B ember support. No second bright color.
+Type: Bricolage Grotesque (display, lowercase headlines), Inter (body + tabular stats).
+Buttons: pill (radius 999px). Primary = orange gradient on dark text, subtle ember glow.
+Cards: 20px radius, hairline border, no heavy shadow. Use inset 1px top highlight instead.
+Gamified primitives: level chip, XP bar, rank chip, streak dot, leaderboard row.
+Rhythm: no light/dark alternation; separate sections with hairlines and tonal shifts.
+Motion: fade‑ups, one marquee. No parallax. No neon.
 ```
 
 ### Quick reference
 
-- Primary CTA: `background: linear-gradient(135deg,#7C5CFF,#FF4F9A); color:#fff; border-radius:999px; box-shadow:0 0 80px -12px rgba(124,92,255,0.55);`
-- Card: `background:#0F0E14; border:1px solid rgba(255,255,255,0.08); border-radius:24px; padding:28px;`
-- Hero backdrop: `background:#07060A; overlay radial-gradient(60% 50% at 50% 0%, rgba(124,92,255,0.35), transparent 60%);`
-- Cream block: `background:#FFF6E6; color:#1A0B2E;`
+- Primary CTA: `background: linear-gradient(135deg,#FF6B1A,#FFA552); color:#050505; border-radius:999px; box-shadow:0 0 28px -12px rgba(255,107,26,0.40);`
+- Card: `background:#151318; border:1px solid rgba(255,255,255,0.07); border-radius:20px; padding:24px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);`
+- XP bar: `height:6px; background:#1D1A20; border-radius:999px; fill: linear-gradient(90deg,#FF6B1A,#FFC36B);`
+- Level chip: `height:26px; border-radius:999px; padding:0 10px; background:#151318; border:1px solid rgba(255,107,26,0.35); color:#FFC36B; font: 600 12px Inter;`
+- Hero backdrop: `background:#050505; overlay: radial-gradient(60% 40% at 50% -10%, rgba(255,107,26,0.18), transparent 60%);`
 
 ---
 
-_Last updated: 2026-04-22. Owner: PissPot brand. Changes to tokens must be mirrored in `packages/design-system/src/tokens.css` and `tailwind-preset.ts`._
+_Last updated: 2026-04-22. Owner: PissPot brand. Any token change must be mirrored in `packages/design-system/src/tokens.css` and `tailwind-preset.ts`._
