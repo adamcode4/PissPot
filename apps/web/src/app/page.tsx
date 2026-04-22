@@ -79,6 +79,28 @@ const recap = [
   },
 ] as const;
 
+type Damage = {
+  value: string;
+  label: string;
+  dot?: boolean;
+  accent?: boolean;
+};
+
+const damage: Damage[] = [
+  { value: "13", label: "pints sunk", accent: true },
+  { value: "04", label: "double rounds" },
+  { value: "22", label: "songs shouted" },
+  { value: "03", label: "dancefloors visited" },
+  { value: "05", label: "strangers befriended" },
+  { value: "02", label: "smoke‑break trips" },
+  { value: "01", label: "questionable kebab", dot: true },
+  { value: "07", label: "mystery photos" },
+  { value: "03", label: "extra‑curriculars" },
+  { value: "142", label: "min on the dancefloor" },
+  { value: "01", label: "text you shouldn't have sent" },
+  { value: "00", label: "nights ended early" },
+];
+
 type LeaderRow = {
   rank: number;
   name: string;
@@ -104,6 +126,7 @@ export default function HomePage() {
         <Marquee items={marqueeWords} />
         <Features />
         <RecapGallery />
+        <TheDamage />
         <AppMock />
         <Leaderboard />
         <WaitlistCTA />
@@ -132,6 +155,9 @@ function SiteHeader() {
           </a>
           <a href="#recap" className="transition hover:text-pp-text">
             the recap
+          </a>
+          <a href="#damage" className="transition hover:text-pp-text">
+            the damage
           </a>
           <a href="#leaderboard" className="transition hover:text-pp-text">
             leaderboard
@@ -407,6 +433,136 @@ function PolaroidCluster() {
         />
       </div>
     </>
+  );
+}
+
+function TheDamage() {
+  return (
+    <section
+      id="damage"
+      className="relative border-t border-pp-border bg-pp-ink py-24 sm:py-32"
+    >
+      <div
+        className="pointer-events-none absolute inset-0 bg-pp-coal opacity-60"
+        aria-hidden
+      />
+      <div className="relative mx-auto max-w-[1120px] px-5 sm:px-8">
+        <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
+          <div className="max-w-2xl">
+            <p className="pp-eyebrow text-pp-orange">the morning after</p>
+            <h2 className="pp-headline mt-4 text-4xl sm:text-5xl lg:text-[56px]">
+              track your stats —{" "}
+              <span className="pp-grad-word">the damage is real.</span>
+            </h2>
+            <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-pp-muted">
+              we count what you forgot. every pint, every detour, every
+              questionable decision — tallied up and quietly kept for you.
+              yours only. shareable when you want.
+            </p>
+          </div>
+          <span className="pp-tabular inline-flex items-center gap-2 rounded-pill border border-pp-border bg-pp-surface2 px-4 py-2 text-[12px] text-pp-muted shadow-insetTop">
+            <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-pp-ember" />
+            <span className="pp-eyebrow text-pp-muted2">receipt</span>
+            saturday · 09:00pm → 03:12am
+          </span>
+        </div>
+
+        <ul className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+          {damage.map((d, i) => (
+            <li
+              key={d.label}
+              className={`group relative overflow-hidden rounded-card border p-5 shadow-insetTop transition hover:-translate-y-1 ${
+                d.accent
+                  ? "border-pp-orange/40 bg-pp-surface2"
+                  : "border-pp-border bg-pp-surface2 hover:border-pp-borderStrong"
+              }`}
+            >
+              <span
+                className={`pp-tabular absolute right-4 top-4 font-display text-[11px] font-bold ${
+                  d.accent ? "text-pp-ember" : "text-pp-muted2"
+                }`}
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span
+                aria-hidden
+                className={`absolute left-0 top-0 h-full w-[2px] ${
+                  d.accent ? "bg-pp-orange" : "bg-pp-border"
+                }`}
+              />
+              <p className="pp-tabular flex items-baseline gap-2 font-display text-[42px] font-extrabold leading-none text-pp-text sm:text-[52px]">
+                {d.dot ? (
+                  <span className="inline-block h-2.5 w-2.5 animate-pulse-dot self-center rounded-full bg-pp-ember" />
+                ) : null}
+                {d.value}
+              </p>
+              <p className="mt-4 text-[13px] leading-snug text-pp-muted">
+                {d.label}
+              </p>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-10 grid gap-3 sm:grid-cols-3">
+          <NotableCard
+            label="most likely to repeat"
+            value="basement 28"
+            meta="64 min on the dancefloor"
+          />
+          <NotableCard
+            label="crew mvp"
+            value="maya k."
+            meta="3 rounds · 2 saves"
+            accent
+          />
+          <NotableCard
+            label="casualty"
+            value="01:34 am"
+            meta="last known photo"
+          />
+        </div>
+
+        <p className="mt-8 text-center text-[12px] text-pp-muted2 sm:text-left">
+          private by default · you choose what the crew sees
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function NotableCard({
+  label,
+  value,
+  meta,
+  accent,
+}: {
+  label: string;
+  value: string;
+  meta: string;
+  accent?: boolean;
+}) {
+  return (
+    <div
+      className={`relative overflow-hidden rounded-card border p-5 shadow-insetTop ${
+        accent
+          ? "border-pp-orange/40 bg-pp-surface2"
+          : "border-pp-border bg-pp-surface2"
+      }`}
+    >
+      <p className="pp-eyebrow text-pp-muted2">{label}</p>
+      <p className="mt-2 font-display text-[22px] font-extrabold lowercase tracking-tightest text-pp-text sm:text-[26px]">
+        {value}
+      </p>
+      <p className="pp-tabular mt-1 text-[12px] text-pp-muted">{meta}</p>
+      {accent ? (
+        <span
+          aria-hidden
+          className="absolute right-4 top-4 rounded-pill border border-pp-orange/40 bg-pp-orange/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-eyebrow text-pp-orange"
+        >
+          mvp
+        </span>
+      ) : null}
+    </div>
   );
 }
 
