@@ -1,19 +1,36 @@
 /**
- * PissPot design tokens — import in app globals before @tailwind.
- * @import "@pisspot/design-system/tokens.css";
+ * PissPot design tokens. See /design.md for semantics and rules.
+ * Import before Tailwind: @import "@pisspot/design-system/tokens.css";
  */
 :root {
-  --pp-bg: #07060a;
-  --pp-bg-elevated: #0f0e14;
-  --pp-surface: #16141f;
+  /* Brand */
+  --pp-grape: #7c5cff;
+  --pp-grape-hover: #8e72ff;
+  --pp-grape-soft: #1f1636;
+  --pp-gold: #f4b942;
+  --pp-pink: #ff4f9a;
+  --pp-mint: #5be0b3;
+  --pp-red: #ff5c5c;
+
+  /* Dark neutrals */
+  --pp-ink: #07060a;
+  --pp-surface: #0f0e14;
+  --pp-surface-2: #16141f;
   --pp-border: rgba(255, 255, 255, 0.08);
   --pp-text: #f4f2ff;
-  --pp-text-muted: #9d96b8;
-  --pp-accent: #f4b942;
-  --pp-accent-2: #c084fc;
-  --pp-glow: rgba(244, 185, 66, 0.35);
-  --pp-radius-lg: 1rem;
-  --pp-radius-xl: 1.25rem;
-  --pp-font-display: var(--font-display, system-ui);
-  --pp-font-sans: var(--font-sans, system-ui);
+  --pp-muted: #9d96b8;
+
+  /* Bright surfaces */
+  --pp-cream: #fff6e6;
+  --pp-cream-ink: #1a0b2e;
+  --pp-cream-muted: #5a4a76;
+
+  /* Effects */
+  --pp-glow-grape: 0 0 80px -12px rgba(124, 92, 255, 0.55);
+  --pp-radius-card: 24px;
+  --pp-radius-pill: 999px;
+
+  /* Typography (set by app via next/font) */
+  --pp-font-display: var(--font-display, "Bricolage Grotesque", system-ui, sans-serif);
+  --pp-font-sans: var(--font-sans, "Inter", system-ui, sans-serif);
 }

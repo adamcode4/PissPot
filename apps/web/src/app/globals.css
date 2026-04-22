@@ -9,6 +9,26 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply min-h-screen bg-pp-bg bg-pp-mesh font-sans text-pp-text antialiased;
+    @apply min-h-screen bg-pp-ink font-sans text-pp-text antialiased;
+  }
+  ::selection {
+    background: var(--pp-grape);
+    color: white;
+  }
+}
+
+@layer utilities {
+  .pp-headline {
+    @apply font-display font-extrabold lowercase tracking-tightest;
+    line-height: 1.04;
+  }
+  .pp-eyebrow {
+    @apply font-display text-[12px] font-bold uppercase tracking-eyebrow sm:text-[13px];
+  }
+  .pp-grad-word {
+    background: var(--pp-gradient-brand, linear-gradient(135deg, #7c5cff 0%, #ff4f9a 100%));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 }

@@ -6,24 +6,45 @@ import { joinWaitlist, type WaitlistState } from "@/app/actions/waitlist";
 
 const initial: WaitlistState = { status: "idle" };
 
-export function WaitlistForm({ id = "waitlist-email" }: { id?: string }) {
+type Tone = "dark" | "cream";
+
+export function WaitlistForm({
+  id = "waitlist-email",
+  tone = "dark",
+}: {
+  id?: string;
+  tone?: Tone;
+}) {
   const [state, formAction, pending] = useActionState(joinWaitlist, initial);
 
   if (state.status === "success") {
     return (
       <div
-        className="rounded-2xl border border-pp-accent/30 bg-pp-surface/80 px-5 py-4 text-center shadow-card backdrop-blur"
+        className={
+          tone === "cream"
+            ? "rounded-card border border-pp-creamInk/10 bg-white/60 p-5 text-center shadow-cream"
+            : "rounded-card border border-pp-mint/30 bg-pp-surface/80 p-5 text-center shadow-card backdrop-blur"
+        }
         role="status"
       >
-        <p className="font-display text-lg font-semibold text-pp-text">
-          You are on the list
+        <p
+          className={`font-display text-lg font-bold lowercase ${tone === "cream" ? "text-pp-creamInk" : "text-pp-text"}`}
+        >
+          you&apos;re on the list
         </p>
-        <p className="mt-1 text-sm text-pp-muted">
-          We will email you when early access opens. Night well spent.
+        <p
+          className={`mt-1 text-sm ${tone === "cream" ? "text-pp-creamMuted" : "text-pp-muted"}`}
+        >
+          we&apos;ll email you when early access opens. night well spent.
         </p>
       </div>
     );
   }
+
+  const inputBase =
+    tone === "cream"
+      ? "bg-white/80 border-pp-creamInk/15 text-pp-creamInk placeholder:text-pp-creamMuted focus:border-pp-grape/60"
+      : "bg-pp-surface2 border-pp-border text-pp-text placeholder:text-pp-muted focus:border-pp-grape/60";
 
   return (
     <form action={formAction} className="flex w-full flex-col gap-3">
@@ -38,16 +59,25 @@ export function WaitlistForm({ id = "waitlist-email" }: { id?: string }) {
           autoComplete="email"
           required
           placeholder="you@example.com"
-          className="h-12 flex-1 rounded-xl border border-pp-border bg-pp-elevated/90 px-4 text-sm text-pp-text placeholder:text-pp-muted outline-none ring-pp-accent2/0 transition focus:border-pp-accent/50 focus:ring-2 focus:ring-pp-accent2/30"
           disabled={pending}
+          className={`h-[52px] flex-1 rounded-pill border px-5 text-[15px] outline-none transition focus:ring-4 focus:ring-pp-grape/20 ${inputBase}`}
         />
-        <Button type="submit" disabled={pending} className="h-12 shrink-0 px-8">
-          {pending ? "Joining…" : "Join waitlist"}
+        <Button
+          type="submit"
+          variant={tone === "cream" ? "onCream" : "primary"}
+          size="lg"
+          disabled={pending}
+          className="shrink-0"
+        >
+          {pending ? "joining…" : "join the waitlist"}
         </Button>
       </div>
       {state.status === "error" ? (
-        <p className="text-center text-sm text-red-400 sm:text-left" role="alert">
-          {state.message}
+        <p
+          className={`text-sm ${tone === "cream" ? "text-pp-red" : "text-pp-red"}`}
+          role="alert"
+        >
+          {state.message.toLowerCase()}
         </p>
       ) : null}
     </form>
