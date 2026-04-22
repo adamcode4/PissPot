@@ -190,6 +190,21 @@ No stacked shadows. No glassmorphism. No multi‑layer blurs.
 
 ---
 
+## 7b. Imagery
+
+PissPot uses **polaroid‑style photography**, inspired by the end‑credits polaroids of *The Hangover*: warm on‑camera flash, 35mm grain, motion blur on figures, deep blacks.
+
+- **Treatment**: cream film frame (`#f5f1e6`), subtle paper shadow, rotated ±2–6°. Never perfectly aligned.
+- **Caption**: lowercase place name (Bricolage Grotesque) + tabular time on the white strip.
+- **Palette lock**: photos must reduce to **black + warm amber + ember orange**. No cool blues, no green neon, no daylight shots.
+- **Subjects allowed**: bar interiors, dance floors (silhouette), wet night streets, neon takeaways, morning‑after tables, crews walking from behind.
+- **Forbidden**: identifiable faces, brand logos, glamour shots of drinks being poured, Vegas imagery, daylight, smiling stock models.
+- **Layout patterns**:
+  - **Stack** (hero): 3 overlapping polaroids, small to large, alternating rotations.
+  - **Cluster** (recap): 5 polaroids scattered within a 520×1fr area, each with caption + time.
+  - **Grid** (mobile fallback): 2–3 columns, tight gap, alternating rotations.
+- **Performance**: all imagery via `next/image` with `sizes`; LCP polaroids get `priority`.
+
 ## 8. Content & Voice
 
 - **Tone**: dry, confident, a little cocky. Short sentences. One joke per section max.
