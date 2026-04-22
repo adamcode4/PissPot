@@ -1,0 +1,14 @@
+@import "@pisspot/design-system/tokens.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply min-h-screen bg-pp-bg bg-pp-mesh font-sans text-pp-text antialiased;
+  }
+}

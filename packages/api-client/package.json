@@ -1,0 +1,14 @@
+{
+  "name": "@pisspot/api-client",
+  "version": "0.1.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  }
+}
